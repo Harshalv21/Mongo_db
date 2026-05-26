@@ -1,0 +1,41 @@
+1. Use Crub_DB
+2. db.createCollection("Users")
+3. db.users.insertMany([
+	{name:"Tom",age:19,country:"USA"},
+	{name:"Tim",age:17,country:"UK"},
+	{name:"Harshal",age:21,country:"INDIA"},
+	{name:"Jerry",age:23,country:"Ireland"},
+	{name:"David",age:19,country:"INDIA"
+}])
+5. db.users.find()
+6. db.users.find({age:{$gt:18,$lt:22})
+7. db.users.find({country:"INDIA"})
+8. db.users.updateOne({name:"david"},{$set,{age:20}})
+9. db.users.updateMany({age:{$gt:18}},{$inc:{age:1}})
+10. db.users.deleteOne({name:"Jerry"})
+11. db.users.deleteMany({country:"USA"});
+12. Use Product_DB
+13. db.createCollection("products");
+14. db.products.insertMany([
+  {
+    name: "Laptop", category: "Electronics", price: 55000, quantity: 10
+  },
+  {
+    name: "Mobile", category: "Electronics", price: 20000,quantity: 25
+  },
+  {
+    name: "Shoes", category: "Fashion", price: 3000, quantity: 40
+  },
+  {
+    name: "Watch", category: "Accessories", price: 5000, quantity: 15
+  },
+  {
+    name: "Book", category: "Education", price: 500, quantity: 100
+  }])
+16. db.products.find()
+17. db.products.find({price:{$gt:5000,$lt:55000}})
+18. db.products.find({category:"Electronics"})
+19. db.products.updateOne( { name: "Laptop" },{ $set: { price: 60000 }})
+20. db.products.updateMany({ quantity: { $gt: 0 } },{ $inc: { quantity: -1 }})
+21. db.products.deleteOne({ name: "Watch" })
+22. db.products.deleteMany({ quantity: 0 })
