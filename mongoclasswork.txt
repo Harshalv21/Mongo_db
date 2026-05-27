@@ -1,0 +1,69 @@
+use Library_DB
+
+db.createCollection("books")
+
+db.books.insertMany([{title:"BC",author:"C",genre:"Thriller",price:550,availableCopies:1},{title:"NK",author:"D",genre:"Fiction",price:300,availableCopies:5},{title:"KP",author:"M",genre:"Thriller",price:800,availableCopies:3},{title:"BP",author:"T",genre:"Fiction",price:1000,availableCopies:4}])
+
+db.books.find()
+
+db.books.find({price:{$gt:300,$lt:800}})
+
+db.books.updateOne({ title: "AB" },{$set: {price: 750}})
+
+db.books.updateMany({availableCopies: {$gt: 0}},{$inc: {availableCopies: 2}})
+
+db.books.deleteOne({name:"BC"})
+
+db.books.deleteOne({title:"BC"})
+
+db.books.deleteMany({availableCopies:{$lt:0}})
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+use Hospital_DB
+
+db.createCollection("patients")
+
+db.patients.insertMany([{name:"Sunit",age:23,disease:"TB",doctorAssigned:"A",city:"Mumbai"},{name:"Neet",age:45,disease:"Diabetes",doctorAssigned:"KL",city:"Pune"}])
+
+db.patients.insertMany([{name:"Rahul",age:35,disease:"TB",doctorAssigned:"A",city:"Nashik"},{name:"Harry",age:55,disease:"Diabetes",doctorAssigned:"KL",city:"Pune"}])
+
+db.patients.insertMany([{name:"Ritik",age:45,disease:"Dengue",doctorAssigned:"AB",city:"Satara"}])
+
+db.patients.find()
+
+db.patients.find({age:{$gte:20,$lte:50}})
+
+db.patients.find({disease:"Diabetes"})
+
+db.patients.updateOne( { name: "Neet" },{$set: {age:60}})
+
+db.patients.updateOne( { name: "Neet" },{$set: {doctorAssigned:"N"}})
+
+db.patients.updateMany({age:{$gt:60}},{$inc:{age:1}})
+
+db.patients.deleteOne({name:"Sunit"})
+
+db.patients.deleteMany({city:"Mumbai"})
+
+db.patients.findOne({city:"Satara"})
+
+db.patients.find({ },{name:1},{_id:0})
+
+db.patients.find().sort({age:1})
+
+db.patients.find().sort({age:-1})
+
+db.patients.find().limit(3)
+
+db.patients.find().skip(2)
+
+db.patients.find({age:{$gt:40}})
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+use Library_DB
+
+db.books.find({$and:[{genre:"Fiction",price:{$gt:200}}]})
+
+db.books.find({$or:[{genre:"Fiction",price:{$gt:200}}]})
